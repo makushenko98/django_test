@@ -2,4 +2,4 @@
 venv/
 migrations/
 
-*.sqlite
+*.sqlite3

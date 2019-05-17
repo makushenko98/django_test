@@ -22,7 +22,7 @@ class BookSerializer(ModelSerializer):
             model = Annotation
 
     author = AuthorSerializer(read_only=True)
-    annotations = _AnnotationSerializer(write_only=True, many=True)
+    annotations = _AnnotationSerializer(write_only=True, many=True, required=False)
 
     def create(self, validated_data):
         request = self.context.get('request', None)

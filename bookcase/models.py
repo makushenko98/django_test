@@ -9,7 +9,7 @@ class Book(models.Model):
 
 
 class Annotation(models.Model):
-    book = models.ForeignKey(Book, on_delete=models.CASCADE)
+    book = models.ForeignKey(Book, on_delete=models.CASCADE, related_name='annotations')
     text = models.CharField(max_length=500, default='')
     page = models.IntegerField(default=0)
     annotation_author = models.ForeignKey(User, on_delete=models.CASCADE)

@@ -19,7 +19,14 @@ class BookViewSet(ModelViewSet):
         IsAuthenticatedOrReadOnly,
         IsAuthorOrReadOnly,
     )
+
     queryset = Book.objects.all()
+
+    def get_queryset(self):
+        if self.request.query_params.get('has_my_annotations', False):
+            return Book.objects.filter(annotations__annotation_author=self.request.user)
+
+        return Book.objects.all()
     serializer_class = BookSerializer
 
 
